@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* ---- Palette ---- */
+  --color-ink: #12151c;
+  --color-ink-2: #1b2029;
+  --color-slate: #f5f6f8;
+  --color-surface: #ffffff;
+  --color-border: #e4e7ec;
+  --color-muted: #6b7280;
+
+  --color-vision: #2f6fed;      /* Computer Vision pipeline accent */
+  --color-vision-soft: #eaf1ff;
+  --color-assist: #7c5cfc;      /* GenAI pipeline accent */
+  --color-assist-soft: #f2eeff;
+
+  --color-good: #17b26a;
+  --color-good-soft: #e7f9f0;
+  --color-warn: #f79009;
+  --color-warn-soft: #fef3e2;
+  --color-bad: #f04438;
+  --color-bad-soft: #feeceb;
+
+  /* ---- Type ---- */
+  --font-display: "Space Grotesk", "Inter", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+html {
+  font-family: var(--font-body);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  background: var(--color-slate);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: var(--color-vision);
+  color: white;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #d5d9e0;
+  border-radius: 999px;
+  border: 2.5px solid var(--color-slate);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b9c0cb;
+}
+
+@keyframes scanline {
+  0% { transform: translateY(0); opacity: 0; }
+  8% { opacity: 1; }
+  92% { opacity: 1; }
+  100% { transform: translateY(100%); opacity: 0; }
+}
+.animate-scanline {
+  animation: scanline 1.6s ease-in-out infinite;
+}
+
+@keyframes box-in {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+.animate-box-in {
+  animation: box-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.animate-pulse-dot {
+  animation: pulse-dot 1.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-scanline, .animate-box-in, .animate-pulse-dot {
+    animation: none !important;
+  }
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid var(--color-vision);
+  outline-offset: 2px;
+}
