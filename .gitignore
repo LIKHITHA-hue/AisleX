@@ -15,7 +15,6 @@ venv/
 !.env.example
 
 # ML model files
-*.pt
 *.pth
 *.onnx
 

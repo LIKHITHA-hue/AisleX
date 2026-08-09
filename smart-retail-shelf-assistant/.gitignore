@@ -39,7 +39,6 @@ env/
 instance/
 
 # ML model files
-*.pt
 *.pth
 *.onnx
 
