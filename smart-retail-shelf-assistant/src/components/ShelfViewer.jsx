@@ -25,14 +25,13 @@ export default function ShelfViewer({ imageUrl, detections = [], productLookup, 
 
         {!loading &&
           detections.map((d, i) => {
-            const product = productLookup?.(d.productId)
             return (
               <DetectionBox
                 key={d.id}
                 index={i}
                 box={d.box}
                 confidence={d.confidence}
-                label={product?.name?.split(' ').slice(0, 2).join(' ') ?? 'Product'}
+                label={d.productId || d.ocrText || 'Unknown Product'}
                 active={active === i}
                 onHover={(idx) => {
                   setInternalActive(idx)
